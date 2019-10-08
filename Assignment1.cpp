@@ -1,4 +1,3 @@
-//File space
 //Names: Taylor Fix, Utah Nakamura
 #include <iostream>
 
