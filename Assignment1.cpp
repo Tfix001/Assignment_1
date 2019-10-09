@@ -1,52 +1,69 @@
 //Names: Jacob Liu, Taylor Fix, Yuta Nakamura
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
-bool isValid(string);
+bool isValid(string userPolynomial, vector<string> &polyTerms);
 
 int main(){
-  //Check invalidity i.e. Check for negation and/or parathesis --
-  //Check validity i.e. Check for summation and/or multiplication --
-  //Second check for invalidity i.e. n^3n && n^4.2 --
+  // The variable for the user inputted polynomial
   string userPoly;
-  char degree = '0';
-  bool valid = false;
+  // The vecotr that is going to store each individual term
+  vector<string> polyTerms;
+
+  vector<string>::iterator it1;
+  // Gets the user input
   getline(cin, userPoly);
-  //Assuming variable is only n
-  if(userPoly.length() == 1){
-    if(userPoly.at(0) == 'n'){
-      degree = '1';
-    }
-    else if(isdigit(userPoly.at(0))){
-      degree = '0';
-    }
-    else{
-      cout << "Invalid Input" << endl;
-      return 0;
-    }
+  // Test for isValid
+  cout << isValid(userPoly, polyTerms) << endl;
+
+/*
+  for (int i = 0; i < polyTerms.size(); i++){
+    cout << polyTerms.at(i) << endl;
   }
-  else{
-    valid = isValid(userPoly);
-    if(valid){
-      //Used to look for highest degree
-      for(unsigned i = 0; i < userPoly.length(); i++){
-      }
-    }
-    else{
-      cout << "Invalid Input" << endl;
-      return 0;
+*/
+
+  for(it1 = polyTerms.begin(); it1 != polyTerms.end(); it1++) {
+    cout << *it1 << endl;
   }
-  
-  //Check for highest degree (aka Big-O notation) --
-  // If the length of the input expression is m chars, what is the big-Oh complexity of your program with respect to m? --
-  
-  //What if we require that there is only one term for each degree? --
-    //That is, (ii) above is invalid because it has two terms for degree 1 (n^1).
   return 0;
 }
 
-bool isValid(string userString){
+bool isValid(string userPolynomial, vector<string> &polyTerms){
+  // The position of the '+' symbol
+  int positionOfPlus = 0;
+  string term;
+
+  // If there is '-', '(', ')' the polynomial is automatically invalid
+  for (int i = 0; i < userPolynomial.length(); i++){
+    if (userPolynomial[i] == '-' || userPolynomial[i] == '(' || userPolynomial[i] == ')'){
+      return false;
+    }
+  }
+
+  // If is does not include '-', '(', ')'
+  for (int j = 0; j < userPolynomial.length(); j++){
+    cout << "Runs up to here 1" << endl;
+    positionOfPlus = userPolynomial.find("+", j);
+    // If there are no more '+' symbols to look for
+    if (positionOfPlus == string::npos){
+      positionOfPlus = userPolynomial.length();
+    }
+    cout << "Runs up to here 2" << endl;
+    // Store 1 term
+    for (int i = j; i < positionOfPlus; i++){
+      cout << "Runs up to here 3" << endl;
+      term[i] = userPolynomial[i];
+      cout << term[i] << endl;
+    }
+    cout << "Runs up to here 4" << endl;
+    // Store the term into the vector
+    polyTerms.push_back(term);
+
+    j = positionOfPlus;
+
+  }
   return false;
 }
