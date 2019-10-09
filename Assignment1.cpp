@@ -11,14 +11,28 @@ int main(){
   //Check validity i.e. Check for summation and/or multiplication --
   //Second check for invalidity i.e. n^3n && n^4.2 --
   string userPoly;
+  char degree = '0';
   bool valid = false;
   getline(cin, userPoly);
-  if(userPoly.length() > 1){
-    valid = isValid(userPoly);
+  //Assuming variable is only n
+  if(userPoly.length() == 1){
+    if(userPoly.at(0) == 'n'){
+      degree = '1';
+    }
+    else if(isDigit(userPoly.at(0))){
+      degree = '0';
+    }
+    else{
+      cout << "Invalid Input" << endl;
+      return 0;
   }
-  for(unsigned i = 0; i <= userPoly.length(); i++){
-    //Check string for top three
-    //Can also be used to look for highest degree
+  else{
+    valid = isValid(userPoly);
+      if(valid){
+      //Used to look for highest degree
+      for(unsigned i = 0; i < userPoly.length(); i++){
+      }
+    }
   }
   
   //Check for highest degree (aka Big-O notation) --
