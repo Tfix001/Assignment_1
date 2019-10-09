@@ -1,5 +1,6 @@
-//Names: Taylor Fix, Utah Nakamura
+//Names: Taylor Fix, Yuta Nakamura, Jacob Liu
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -9,7 +10,7 @@ int main(){
   //Second check for invalidity i.e. n^3n && n^4.2 --
   string userPoly;
   getline(cin, userPoly);
-  for(unsigned i = 0; i < userPoly.size(); i++){
+  for(unsigned i = 0; i < userPoly.length(); i++){
     //Check string for top three
     //Can also be used to look for highest degree
   }
