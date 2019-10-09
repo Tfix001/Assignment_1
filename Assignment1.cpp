@@ -9,7 +9,7 @@ int main() {
   getline(cin, userPoly);
   char state = 'A';
 
-  for(int i = 0; i<userPoly.length(); i++) {
+  for(int i = 0; i < userPoly.length() + 1; i++) {
     switch(state)
     {
       case 'A':
@@ -125,5 +125,11 @@ int main() {
         return false;
         break;
      }
+   }
+   if(userPoly.size() > 0){
+        if(!isdigit(userPoly[userPoly.length() - 1]) || userPoly[userPoly.length() - 1] != 'n'){
+            cout << "Invalid Polynomial" << endl;
+            return false;
+        }
    }
 }
