@@ -20,5 +20,5 @@ int main(){
   
   //What if we require that there is only one term for each degree? --
     //That is, (ii) above is invalid because it has two terms for degree 1 (n^1).
-  return 1;
+  return 0;
 }
