@@ -10,7 +10,7 @@ int main(){
   //Second check for invalidity i.e. n^3n && n^4.2 --
   string userPoly;
   getline(cin, userPoly);
-  for(unsigned i = 0; i < userPoly.length(); i++){
+  for(unsigned i = 0; i <= userPoly.length(); i++){
     //Check string for top three
     //Can also be used to look for highest degree
   }
