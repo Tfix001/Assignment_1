@@ -15,7 +15,7 @@ Expressions do not include '/'
 The variable is 'n'
 Expressions do not include special characters i.e. '@', '!'
 Integers will not multiply with each other i.e. 4*4
-The coeffecient won't be after the variable. "n * 2"
+The coeffecient won't be after the variable. "n * 2" / 
 No log functions
 */
 
