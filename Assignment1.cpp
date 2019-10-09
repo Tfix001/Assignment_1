@@ -4,6 +4,8 @@
 
 using namespace std;
 
+bool inValid(string);
+
 int main(){
   //Check invalidity i.e. Check for negation and/or parathesis --
   //Check validity i.e. Check for summation and/or multiplication --
@@ -22,3 +24,7 @@ int main(){
     //That is, (ii) above is invalid because it has two terms for degree 1 (n^1).
   return 0;
 }
+
+bool inValid(string userString){
+  
+  )
