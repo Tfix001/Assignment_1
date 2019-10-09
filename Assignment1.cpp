@@ -4,14 +4,18 @@
 
 using namespace std;
 
-bool inValid(string);
+bool isValid(string);
 
 int main(){
   //Check invalidity i.e. Check for negation and/or parathesis --
   //Check validity i.e. Check for summation and/or multiplication --
   //Second check for invalidity i.e. n^3n && n^4.2 --
   string userPoly;
+  bool valid = false;
   getline(cin, userPoly);
+  if(userPoly.length() > 1){
+    valid = isValid(userPoly);
+  }
   for(unsigned i = 0; i <= userPoly.length(); i++){
     //Check string for top three
     //Can also be used to look for highest degree
@@ -25,6 +29,6 @@ int main(){
   return 0;
 }
 
-bool inValid(string userString){
-  
+bool isValid(string userString){
+  return false;
 }
