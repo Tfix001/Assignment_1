@@ -34,6 +34,9 @@ int main(){
       for(unsigned i = 0; i < userPoly.length(); i++){
       }
     }
+    else{
+      cout << "Invalid Input" << endl;
+      return 0;
   }
   
   //Check for highest degree (aka Big-O notation) --
