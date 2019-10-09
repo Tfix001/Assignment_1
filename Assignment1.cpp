@@ -25,10 +25,11 @@ int main(){
     else{
       cout << "Invalid Input" << endl;
       return 0;
+    }
   }
   else{
     valid = isValid(userPoly);
-      if(valid){
+    if(valid){
       //Used to look for highest degree
       for(unsigned i = 0; i < userPoly.length(); i++){
       }
