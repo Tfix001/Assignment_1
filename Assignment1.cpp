@@ -1,4 +1,4 @@
-//Names: Taylor Fix, Yuta Nakamura, Jacob Liu
+//Names: Jacob Liu, Taylor Fix, Yuta Nakamura
 #include <iostream>
 #include <string>
 
