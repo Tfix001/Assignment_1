@@ -10,28 +10,67 @@ int main() {
   for(int i = 0; i<userPoly.length(); i++) {
     switch(state):
     case 'A':
-      if(isdigit(userPoly[i]) || userPoly[i] == 'n'){
-
+      if(isdigit(userPoly[i]){ // If the character is a number
+        state = 'C';
       }
-    break;
+      else if (userPoly[i] == 'n'){ // If the character is 'n'
+        state = 'B';
+      }
+      else{
+        state = 'Z';
+      }
+      break;
+
     case 'B':
-      if(userPoly[i] == '+' || userPoly[i] =='^') {
-
+      if(userPoly[i] == '+'') { // If the character is '+'
+        state = 'A';
       }
-    break;
+      else if(userPoly[i] =='^'){ // If the character is '^'
+        state = 'G'
+      }
+      else{
+        state = 'Z';
+      }
+      break;
+
     case 'C': //there is a self loop
-      if(isdigit(userPoly[i]) || userPoly[i] == '.' || userPoly[i] == '*') {
-
+      if(isdigit(userPoly[i])) {
+        state = 'C';
       }
-    break;
+      else if(userPoly[i] == '.'){
+        state = 'D';
+      }
+      else if(userPoly[i] == '*'){
+        state = 'F';
+      }
+      else{
+        state = 'Z';
+      }
+      break;
+
     case 'D': //dont need to touch
-      if(isdigit(userPoly[i]))
-    break;
-    case 'E': // there is a self loop
-      if(isdigit(userPoly[i])|| userPoly[i] == '*' || userPoly[i] == '+'){
-
+      if(isdigit(userPoly[i])){
+        state = 'E';
       }
-    break;
+      else{
+        state = 'Z';
+      }
+      break;
+
+    case 'E': // there is a self loop
+      if(isdigit(userPoly[i])){
+        state = 'E';
+      }
+      else if(userPoly[i] == '*'){
+        state = 'F';
+      }
+      else if(userPoly[i] == '+'){
+        state = 'A';
+      }
+      else {
+        state = 'Z'
+      }
+      break;
     
     case 'F':
       if(userPoly[i] == 'n'){
@@ -79,4 +118,5 @@ int main() {
     cout << "Invalid Polynomial" << endl;
     return false;
     break;
-    }
+   }
+}
