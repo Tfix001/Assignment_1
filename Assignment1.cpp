@@ -19,7 +19,7 @@ int main(){
     if(userPoly.at(0) == 'n'){
       degree = '1';
     }
-    else if(isDigit(userPoly.at(0))){
+    else if(isdigit(userPoly.at(0))){
       degree = '0';
     }
     else{
