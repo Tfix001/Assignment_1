@@ -32,32 +32,51 @@ int main() {
 
       }
     break;
+    
     case 'F':
       if(userPoly[i] == 'n'){
-
+        state = 'H';
+      }
+      else{
+        state = 'Z';
       }
     break;
+
     case 'G':
       if(isdigit(userPoly[i])){
-
+        state = 'I';
+      }
+      else{
+        state = 'Z'; 
       }
     break;
+
     case 'H':
       if(userPoly[i] =='^') {
-
-      } else if ( userPoly[i] == '+') {
-
+        state = 'I';
+      }
+      else if ( userPoly[i] == '+') {
+        state = 'A';
+      }
+      else{
+        state = 'Z';
       }
     break;
+
     case 'I': //self loop
       if(isdigit(userPoly[i]){
-
-      } else if (userPoly[i] == '+'){
-
+        state = 'I';
+      }
+      else if (userPoly[i] == '+'){
+        state = 'A';
+      }
+      else{
+        state = 'Z';
       }
     break;
-    default:
-    break;
 
-}
-}
+    default:
+    cout << "Invalid Polynomial" << endl;
+    return false;
+    break;
+    }
