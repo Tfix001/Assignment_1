@@ -1,16 +1,26 @@
 //Names: Jacob Liu, Taylor Fix, Yuta Nakamura
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 bool isValid(string);
+
+/*
+Assuming...
+Expression can start with '.'
+Expressions do not include '/'
+The variable is 'n'
+Expressions do not include special characters i.e. '@', '!'
+*/
 
 int main(){
   //Check invalidity i.e. Check for negation and/or parathesis --
   //Check validity i.e. Check for summation and/or multiplication --
   //Second check for invalidity i.e. n^3n && n^4.2 --
   string userPoly;
+  vector<string> poly
   char degree = '0';
   bool valid = false;
   getline(cin, userPoly);
