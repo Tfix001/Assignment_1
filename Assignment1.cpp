@@ -46,6 +46,9 @@ int main() {
         else if(userPoly[i] == '*'){
           state = 'F';
         }
+        else if(userPoly[i] == '+'){
+          state = 'A';
+        }
         else{
           state = 'Z';
         }
