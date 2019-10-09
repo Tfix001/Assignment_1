@@ -1,66 +1,63 @@
-//Names: Jacob Liu, Taylor Fix, Yuta Nakamura
-//Outside sources: Steven Calvert, Michael Ching (Gave us the idea to use a Finite State Machine)
 #include <iostream>
 #include <string>
 #include <vector>
 
 using namespace std;
 
-bool isValid(string);
-
-/*
-Assuming...
-Expression cannot start with '.', at least "0."
-Expressions do not include '/'
-The variable is 'n'
-Expressions do not include special characters i.e. '@', '!'
-Integers will not multiply with each other i.e. 4*4
-The coeffecient won't be after the variable. "n * 2"
-No log functions
-*/
-
-int main(){
-  //Check invalidity i.e. Check for negation and/or parathesis --
-  //Check validity i.e. Check for summation and/or multiplication --
-  //Second check for invalidity i.e. n^3n && n^4.2 --
+int main() {
   string userPoly;
-  vector<string> poly
-  char degree = '0';
-  bool valid = false;
-  getline(cin, userPoly);
-  //Assuming variable is only n
-  if(userPoly.length() == 1){
-    if(userPoly.at(0) == 'n'){
-      degree = '1';
-    }
-    else if(isdigit(userPoly.at(0))){
-      degree = '0';
-    }
-    else{
-      cout << "Invalid Input" << endl;
-      return 0;
-    }
-  }
-  else{
-    valid = isValid(userPoly);
-    if(valid){
-      //Used to look for highest degree
-      for(unsigned i = 0; i < userPoly.length(); i++){
-      }
-    }
-    else{
-      cout << "Invalid Input" << endl;
-      return 0;
-  }
-  
-  //Check for highest degree (aka Big-O notation) --
-  // If the length of the input expression is m chars, what is the big-Oh complexity of your program with respect to m? --
-  
-  //What if we require that there is only one term for each degree? --
-    //That is, (ii) above is invalid because it has two terms for degree 1 (n^1).
-  return 0;
-}
+  char state = 'A';
+  for(int i = 0; i<userPoly.length(); i++) {
+    switch(state):
+    case 'A':
+      if(isdigit(userPoly[i]) || userPoly[i] == 'n'){
 
-bool isValid(string userString){
-  return false;
+      }
+    break;
+    case 'B':
+      if(userPoly[i] == '+' || userPoly[i] =='^') {
+
+      }
+    break;
+    case 'C': //there is a self loop
+      if(isdigit(userPoly[i]) || userPoly[i] == '.' || userPoly[i] == '*') {
+
+      }
+    break;
+    case 'D': //dont need to touch
+      if(isdigit(userPoly[i]))
+    break;
+    case 'E': // there is a self loop
+      if(isdigit(userPoly[i])|| userPoly[i] == '*' || userPoly[i] == '+'){
+
+      }
+    break;
+    case 'F':
+      if(userPoly[i] == 'n'){
+
+      }
+    break;
+    case 'G':
+      if(isdigit(userPoly[i])){
+
+      }
+    break;
+    case 'H':
+      if(userPoly[i] =='^') {
+
+      } else if ( userPoly[i] == '+') {
+
+      }
+    break;
+    case 'I':
+      if(isdigit(userPoly[i]){
+
+      } else if (userPoly[i] == '+'){
+
+      }
+    break;
+    default:
+    break;
+
+}
 }
