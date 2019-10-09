@@ -1,4 +1,5 @@
 //Names: Jacob Liu, Taylor Fix, Yuta Nakamura
+//Outside sources: Steven Calvert, Michael Ching (Gave us the idea to use a Finite State Machine)
 #include <iostream>
 #include <string>
 #include <vector>
@@ -9,10 +10,13 @@ bool isValid(string);
 
 /*
 Assuming...
-Expression can start with '.'
+Expression cannot start with '.', at least "0."
 Expressions do not include '/'
 The variable is 'n'
 Expressions do not include special characters i.e. '@', '!'
+Integers will not multiply with each other i.e. 4*4
+The coeffecient won't be after the variable. "n * 2"
+No log functions
 */
 
 int main(){
