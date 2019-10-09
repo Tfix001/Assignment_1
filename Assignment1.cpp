@@ -49,7 +49,7 @@ int main() {
 
       }
     break;
-    case 'I':
+    case 'I': //self loop
       if(isdigit(userPoly[i]){
 
       } else if (userPoly[i] == '+'){
