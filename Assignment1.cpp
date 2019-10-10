@@ -57,6 +57,8 @@ Should return the subsetArray? Should return somehow.
 *  End Call
 */
 
+//If my thinking is correct, we should really only have O(n) here. Since I don't think there should be a nested loop
+
 //Array[size] = {what's inside the array}
 
 //TODO: Fix return type
