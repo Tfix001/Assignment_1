@@ -36,6 +36,16 @@ int main(){
   else{
     cout << "This is not a valid polynomial." << endl;
   }
+  
+  string polyDegrees = findDegrees(userPoly);
+  string highestDegree = getHighestDegree(polyDegrees);
+  
+  if(highestDegree != "0"){
+    cout << "O(n^" << highestDegree << ')' << endl;
+  }
+  else{
+    cout << "O(1)" << endl;
+  }
 
   return 0;
 }
@@ -64,7 +74,6 @@ string findDegrees(string userPoly){
 
 string getHighestDegree(string strOfExp){
   //take the string we made last time and make it into a vector
-  string strOfExp = "11 3 5 12";
   vector<string> vecOfExp;
   int i = 0;
   int ind = strOfExp.find(" ");
