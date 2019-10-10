@@ -2,13 +2,13 @@
 * Names: Jacob Liu, Taylor Fix, Yuta Nakamura
 * Outside sources: Steven Calvert, Michael Ching (Gave us the idea to use a Finite State Machine)
 * Assumptions: 
-*   - Expression cannot start with '.', at least "0."
+*   - Expressions do not start with '.'
 *   - Expressions do not include '/'
-*   - The variable is 'n'
+*   - The only variable used in the expression is 'n'
 *   - Expressions do not include special characters i.e. '@', '!'
-*   - All multiplication between numbers and variables are assumed to be resolved before being entered i.e. 16 not 4*4 and n^3 not n*n*n
+*   - All multiplication between numbers and variables are resolved before being entered i.e. 16 not 4*4 and n^3 not n*n*n
 *   - There will be no integers multiplied after the variable
-*   - No constant log expressions entered as coefficients
+*   - No constant logarithmic expressions entered as coefficients
 */
 
 #include <iostream>
@@ -18,47 +18,43 @@
 using namespace std;
 
 /*---------- Function Prototypes ----------*/
-// Return the 
+// Return the degrees of the expression
 string findDegrees(string);
-// 
+// Find the highest degree found with find degrees
 string getHighestDegree(string);
+// Remove the whitespaces from the expression
 string removeWhiteSpace(string);
+// Checks if given expression is a polynomial
 bool isPolynomial(string);
 
-/*---------- Function Main ----------*/
+/*---------- Main Function ----------*/
 int main(){
-  //Check invalidity i.e. Check for negation and/or parathesis --
-  //Check validity i.e. Check for summation and/or multiplication --
-  //Second check for invalidity i.e. n^3n && n^4.2 --
+  // The expression for the user inputted polynomial
   string userPoly;
   getline(cin, userPoly);
+  // Removing whitespace from polynomial
   userPoly = removeWhiteSpace(userPoly);
-
-  if (isPolynomial(userPoly)){
-    //cout << "This is a valid polynomial." << endl;
-  }
-  else{
-    //cout << "This is not a valid polynomial." << endl;
-    return 0;
-  }
-
+  // Finding the degrees within the polynomial
   string polyDegrees = findDegrees(userPoly);
+  // Find the highest degree in polyDegrees
   string highestDegree = getHighestDegree(polyDegrees);
-
-  if((highestDegree != "0") && (highestDegree != "-1")){
+  
+  // Prints the asymptotic complexity of the expression if said expression is a polynomial
+  if((highestDegree != "0") && (highestDegree != "-1")){ // If the expression is not a constant
     cout << "O(n^" << highestDegree << ')' << endl;
   }
-  else if(highestDegree == "0"){
+  else if(highestDegree == "0"){ // If the expression is a constant
     cout << "O(1)" << endl;
   }
-  else{
+  else{ // If the expression is an invalid polynomial
     cout << "Invalid Polynomial (Due to repeating degrees)" << endl;
   }
 
   return 0;
 }
 
-
+/*---------- Function Definitions ----------*/
+// Find the degrees within the polynomial
 string findDegrees(string poly){
   string newString = "";
   unsigned index;
@@ -84,10 +80,12 @@ string findDegrees(string poly){
   return newString;
 }
 
+// Finds the highest degree with in the string returned in findDegrees
 string getHighestDegree(string strOfExp){
-  //take the string we made last time and make it into a vector
+  // Takes the string we made last time and make it into a vector
   vector<string> vecOfExp;
   int i = 0;
+  // Position of whitespace
   int ind = strOfExp.find(" ");
   while(i < strOfExp.length()){
     if(ind > strOfExp.length()){
@@ -132,7 +130,6 @@ string getHighestDegree(string strOfExp){
   }
 }
 
-/*---------- Function Definitions ----------*/
 // Removes the white space within the string
 string removeWhiteSpace(string input)
 {
@@ -153,6 +150,7 @@ string removeWhiteSpace(string input)
   return noWhitespace;
 }
 
+// Finite State Machine to find if the expression is a valid polynomial
 // Returns if the expression is a polynomial
 bool isPolynomial(string userPoly){
   // This is assuming that the polynomial starts with 'n' or a number
