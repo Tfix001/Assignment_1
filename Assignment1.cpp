@@ -18,7 +18,7 @@ Expressions do not include '/'
 The variable is 'n'
 Expressions do not include special characters i.e. '@', '!'
 All multiplication between numbers and variables are assumed to be resolved before being entered i.e. 16 not 4*4 and n^3 not n*n*n
-The coeffecient won't be after the variable. "n * 2" / 
+The coeffecient won't be after the variable. "n * 2" /
 No log functions
 */
 
@@ -31,45 +31,53 @@ int main(){
   userPoly = removeWhiteSpace(userPoly);
 
   if (isPolynomial(userPoly)){
-    cout << "This is a valid polynomial." << endl;
+    //cout << "This is a valid polynomial." << endl;
   }
   else{
-    cout << "This is not a valid polynomial." << endl;
+    //cout << "This is not a valid polynomial." << endl;
+    return 0;
   }
-  
+
   string polyDegrees = findDegrees(userPoly);
   string highestDegree = getHighestDegree(polyDegrees);
-  
-  if(highestDegree != "0"){
+
+  if((highestDegree != "0") && (highestDegree != "-1")){
     cout << "O(n^" << highestDegree << ')' << endl;
   }
-  else{
+  else if(highestDegree == "0"){
     cout << "O(1)" << endl;
+  }
+  else{
+    cout << "Invalid Polynomial (Due to repeating degrees)" << endl;
   }
 
   return 0;
 }
 
 
-string findDegrees(string userPoly){
-  string newString;
-  for(int i = 0; i< userPoly.length(); i++){
-    i = userPoly.find("n", i){
-    if(userPoly[i++]=='^'){
-      for(int j = i+2;(userPoly[j]!='+') || (j!= userPoly.length); j++) {
-        newString+=userPoly[j];
-      }
-      newString+=" ";
+string findDegrees(string poly){
+  string newString = "";
+  unsigned index;
+  for(unsigned i = 0; i < poly.length(); i++){
+    index = poly.find("n", i);
+    if(index > poly.length()){
+        break;
     }
-    else {
-      newString +='1';
-      newString +=" ";
+    if(poly[index + 1] == '^'){
+        for(unsigned j = index + 1; poly[j] != '+'; j++){
+            newString += poly[j];
+        }
     }
+    else{
+        newString += "1";
+    }
+    newString += " ";
+    i = index;
   }
-}
-  if(newString.isEmpty()) {
+  if(newString == ""){
     newString = "0";
   }
+  return newString;
 }
 
 string getHighestDegree(string strOfExp){
@@ -88,6 +96,13 @@ string getHighestDegree(string strOfExp){
   if(vecOfExp.size() > 1){
     unsigned maxDegree = 0;
     for(unsigned i = 1; i < vecOfExp.size(); i++){
+        for(unsigned j = 0; j < vecOfExp.size(); j++){
+            if(j != i){
+                if(vecOfExp.at(j) == vecOfExp.at(i)){
+                    return "-1";
+                }
+            }
+        }
         //Check size to see if max is the same as i i.e. max = "3" i = "7"
         if((vecOfExp.at(maxDegree).size()) == (vecOfExp.at(i)).size()){
             //Check both strings to see if i is greater than maxDegree i.e. I = "7" maxDegree = "3"
@@ -95,9 +110,6 @@ string getHighestDegree(string strOfExp){
                 maxDegree = i;
             }
             //Completes part C.
-            else if(vecOfExp.at(maxDegree) == vecOfExp.at(i)){
-                return "-1";
-            }
         }
         //Check size to see if maxDegree is less than i i.e. max = "9" i = "12"
         else if((vecOfExp.at(maxDegree).size()) < (vecOfExp.at(i)).size()){
