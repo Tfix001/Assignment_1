@@ -23,7 +23,7 @@ string getHighestDegree(string strOfExp){
             }
             //Completes part C.
             else if(vecOfExp.at(maxDegree) == vecOfExp.at(i)){
-                return -1;
+                return "-1";
             }
         }
         //Check size to see if maxDegree is less than i i.e. max = "9" i = "12"
