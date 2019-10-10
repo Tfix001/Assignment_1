@@ -26,8 +26,6 @@ int main(){
   //Second check for invalidity i.e. n^3n && n^4.2 --
   string userPoly;
   getline(cin, userPoly);
-      return 0;
-  }
   return 0;
 }
 
