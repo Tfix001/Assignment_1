@@ -18,7 +18,9 @@
 using namespace std;
 
 /*---------- Function Prototypes ----------*/
+// Return the 
 string findDegrees(string);
+// 
 string getHighestDegree(string);
 string removeWhiteSpace(string);
 bool isPolynomial(string);
