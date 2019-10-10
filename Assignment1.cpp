@@ -162,7 +162,7 @@ bool isPolynomial(string userPoly){
 
       case 'H':
         if(userPoly[i] =='^') { // If the char is a '^'
-          state = 'I';
+          state = 'G';
         }
         else if ( userPoly[i] == '+') { // If the char is a '+'
           state = 'A';
