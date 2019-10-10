@@ -1,59 +1,42 @@
-//Names: Jacob Liu, Taylor Fix, Yuta Nakamura
-#include <iostream>
-#include <string>
-#include <vector>
-
-using namespace std;
-
-bool isValid(string userPolynomial, vector<string> &polyTerms);
-
-int main(){
-  // The variable for the user inputted polynomial
-  string userPoly;
-  // The vecotr that is going to store each individual term
-  vector<string> polyTerms;
-  // Gets the user input
-  getline(cin, userPoly);
-  // Test for isValid
-  cout << isValid(userPoly, polyTerms) << endl;
-
-  // Print the contents of polyTerms
-  for (int i = 0; i < polyTerms.size(); i++){
-    cout << polyTerms.at(i) << endl;
-  }
-
-  return 0;
-}
-
-bool isValid(string userPolynomial, vector<string> &polyTerms){
-  // The position of the '+' symbol
-  int positionOfPlus = 0;
-  string term;
-
-  // If there is '-', '(', ')' the polynomial is automatically invalid
-  for (int i = 0; i < userPolynomial.length(); i++){
-    if (userPolynomial[i] == '-' || userPolynomial[i] == '(' || userPolynomial[i] == ')'){
-      return false;
+string getHighestDegree(string strOfExp){
+  //take the string we made last time and make it into a vector
+  string strOfExp = "11 3 5 12";
+  vector<string> vecOfExp;
+  int i = 0;
+  int ind = strOfExp.find(" ");
+  while(i < strOfExp.length()){
+    if(ind > strOfExp.length()){
+        ind = strOfExp.length();
     }
+    vecOfExp.push_back(strOfExp.substr(i, ind - i));
+    i = ind + 1;
+    ind = strOfExp.find(" ", i);
   }
-
-  // If is does not include '-', '(', ')' split the expression into each term
-  for (int j = 0; j < userPolynomial.length(); j++){
-    positionOfPlus = userPolynomial.find("+", j);
-    // If there are no more '+' symbols to look for
-    if (positionOfPlus == string::npos){
-      positionOfPlus = userPolynomial.length();
+  if(vecOfExp.size() > 1){
+    unsigned maxDegree = 0;
+    for(unsigned i = 1; i < vecOfExp.size(); i++){
+        //Check size to see if max is the same as i i.e. max = "3" i = "7"
+        if((vecOfExp.at(maxDegree).size()) == (vecOfExp.at(i)).size()){
+            //Check both strings to see if i is greater than maxDegree i.e. I = "7" maxDegree = "3"
+            if(vecOfExp.at(maxDegree) < vecOfExp.at(i)){
+                maxDegree = i;
+            }
+            //Completes part C.
+            else if(vecOfExp.at(maxDegree) == vecOfExp.at(i)){
+                return -1;
+            }
+        }
+        //Check size to see if maxDegree is less than i i.e. max = "9" i = "12"
+        else if((vecOfExp.at(maxDegree).size()) < (vecOfExp.at(i)).size()){
+            maxDegree = i;
+        }
     }
-    // Store 1 term
-    for (int i = j; i < positionOfPlus; i++){
-      term += userPolynomial[i];
-    }
-    // Store the term into the vector
-    polyTerms.push_back(term);
-
-    j = positionOfPlus;
-    term.clear();
+    return vecOfExp.at(maxDegree);
   }
-
-  return false;
+  else if(vecOfExp.size() == 1){
+    return vecOfExp.at(0);
+  }
+  else{
+    return "0";
+  }
 }
