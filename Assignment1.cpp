@@ -96,6 +96,7 @@ string getHighestDegree(string strOfExp){
   if(vecOfExp.size() > 1){
     unsigned maxDegree = 0;
     for(unsigned i = 1; i < vecOfExp.size(); i++){
+      //This loop below completes part C. Since our code was already O(n^2) runtime, it did not affect anything
         for(unsigned j = 0; j < vecOfExp.size(); j++){
             if(j != i){
                 if(vecOfExp.at(j) == vecOfExp.at(i)){
@@ -103,13 +104,14 @@ string getHighestDegree(string strOfExp){
                 }
             }
         }
+      //End of part C code
+      
         //Check size to see if max is the same as i i.e. max = "3" i = "7"
         if((vecOfExp.at(maxDegree).size()) == (vecOfExp.at(i)).size()){
             //Check both strings to see if i is greater than maxDegree i.e. I = "7" maxDegree = "3"
             if(vecOfExp.at(maxDegree) < vecOfExp.at(i)){
                 maxDegree = i;
             }
-            //Completes part C.
         }
         //Check size to see if maxDegree is less than i i.e. max = "9" i = "12"
         else if((vecOfExp.at(maxDegree).size()) < (vecOfExp.at(i)).size()){
