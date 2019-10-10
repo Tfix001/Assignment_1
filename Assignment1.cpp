@@ -23,22 +23,42 @@ Examples:
 20 = 10 * 2 * 1
 DOES NOT WORK (unless 1 is in the Array): 37 = 37 * 1
 
-37
-16 2 1 37
-1 2 16 37
+Using pseudocode method shown below (Currently)
+
+first target = 37
+array = 16 2 1 37
+after first findSubsetProduct call
+target = 37
+array = 16 2 0 37
+newArrary = 1
+after second findSubsetProduct call
+target = 1
+array = 16 2 0 0
+newArray = 1 37
+after third findSubsetProduct call
+"No possible subset to produce the target as product
+
+
 
 *  Taylor's Theory: 
 *  (Possibly recurrsive program?)
-*  Call a function with an array(NOT BY REFERENCE), and target number
-*  If we can find a number such that target number % array[index] == 0
-*    -> First number = array[index]
-*    -> target number = target number / First number
-*    -> array[index] = 0
-*      -> call the function with the new array, and target number
+*  Call a function with an array, and target number
+*  If array at index is 0 -> skip it
+*  If we can find a number such that target number % array at index is 0
+*    -> First number becomes the array at index
+*    -> target number becomes target number / First number
+*    -> array at index becomes 0
+*      -> call the function with the new array, and target number (Should be simpler to check through?)
 *  If we don't, then the target number does not have a subset of array ints that will produce it as a product
 */
 
+
+//TODO: Fix return type
+void findSubsetProduct(int arr[]&, int);
+
 int main(){
-  //First idea: 
+  
   return 0;
 }
+
+void findSubsetProduct(int arr[]& 
