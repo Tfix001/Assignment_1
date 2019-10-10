@@ -56,6 +56,7 @@ int main(){
 /*---------- Function Definitions ----------*/
 // Find the degrees within the polynomial
 string findDegrees(string poly){
+  
   string newString = "";
   unsigned index;
   for(unsigned i = 0; i < poly.length(); i++){
