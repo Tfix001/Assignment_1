@@ -1,5 +1,15 @@
-//Names: Jacob Liu, Taylor Fix, Yuta Nakamura
-//Outside sources: Steven Calvert, Michael Ching (Gave us the idea to use a Finite State Machine)
+/*
+* Names: Jacob Liu, Taylor Fix, Yuta Nakamura
+* Outside sources: Steven Calvert, Michael Ching (Gave us the idea to use a Finite State Machine)
+* Assuming...
+* Expression cannot start with '.', at least "0."
+* Expressions do not include '/'
+* The variable is 'n'
+* Expressions do not include special characters i.e. '@', '!'
+* All multiplication between numbers and variables are assumed to be resolved before being entered i.e. 16 not 4*4 and n^3 not n*n*n
+The coeffecient won't be after the variable. "n * 2" /
+No log functions
+*/
 #include <iostream>
 #include <string>
 #include <vector>
@@ -10,17 +20,6 @@ string findDegrees(string);
 string getHighestDegree(string);
 string removeWhiteSpace(string);
 bool isPolynomial(string);
-
-/*
-Assuming...
-Expression cannot start with '.', at least "0."
-Expressions do not include '/'
-The variable is 'n'
-Expressions do not include special characters i.e. '@', '!'
-All multiplication between numbers and variables are assumed to be resolved before being entered i.e. 16 not 4*4 and n^3 not n*n*n
-The coeffecient won't be after the variable. "n * 2" /
-No log functions
-*/
 
 int main(){
   //Check invalidity i.e. Check for negation and/or parathesis --
