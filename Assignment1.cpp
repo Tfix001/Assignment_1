@@ -26,16 +26,17 @@ Using pseudocode method shown below (Currently)
 
 first target = 37
 array = 16 2 1 37
-after first findSubsetProduct call
+after first findSubset call
 target = 37
 array = 16 2 0 37
-newArrary = 1
-after second findSubsetProduct call
-target = 1
-array = 16 2 0 0
-newArray = 1 37
-after third findSubsetProduct call
-"No possible subset to produce the target as product
+subsetarray = 1
+after second findSubset call
+target = 37
+array = 16 2 0 37
+subsetarray = 1 37
+Should return the subsetArray? Should return somehow.
+--Meaning that the subset gets back to the main function. 
+  Either by the output of the function, or since it was a reference in the function?
 
 
 
@@ -44,10 +45,10 @@ after third findSubsetProduct call
 *  Call a function with an array, a target number, and a subsetArray? (Not sure how to get the subset otherwise)
 *  --Either check if the array is empty here or in the main function
 *    If array at index is 0 -> skip it
-*    If we can find a number such that target number % array at index is 0
+*    If we can find a number such that target number % array at index is 0   (% 1 gives 0 as output too)
 *      -> newNumber becomes the array at index
 *      -> subsetArray gets the newNumber
-*      -> If subsetArray product does not equal target number
+*      -> If subsetArray product does not equal target number ------ Helper function?
 *        -> target number becomes target number / newNumber
 *        -> array at index becomes 0
 *        -> call the function with the new array, and target number (Should be simpler to check through?)
@@ -56,9 +57,10 @@ after third findSubsetProduct call
 *  End Call
 */
 
+//Array[size] = {what's inside the array}
 
 //TODO: Fix return type
-void findSubsetProduct(int userArr[]&, int, int subsetArr[]&);
+void findSubset(int userArr[]&, int, int subsetArr[]&);
 
 int main(){
   //user inputs an array 
@@ -69,5 +71,5 @@ int main(){
   return 0;
 }
 
-void findSubsetProduct(int userArr[]&, int target){
+void findSubset(int userArr[]&, int target){
 }
