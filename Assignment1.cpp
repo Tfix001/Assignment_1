@@ -7,20 +7,23 @@
 * The variable is 'n'
 * Expressions do not include special characters i.e. '@', '!'
 * All multiplication between numbers and variables are assumed to be resolved before being entered i.e. 16 not 4*4 and n^3 not n*n*n
-The coeffecient won't be after the variable. "n * 2" /
-No log functions
+* The coeffecient won't be after the variable. "n * 2" /
+* No log functions
 */
+
 #include <iostream>
 #include <string>
 #include <vector>
 
 using namespace std;
 
+/*---------- Function Prototypes ----------*/
 string findDegrees(string);
 string getHighestDegree(string);
 string removeWhiteSpace(string);
 bool isPolynomial(string);
 
+/*---------- Function Main ----------*/
 int main(){
   //Check invalidity i.e. Check for negation and/or parathesis --
   //Check validity i.e. Check for summation and/or multiplication --
@@ -127,7 +130,7 @@ string getHighestDegree(string strOfExp){
   }
 }
 
-/*---------- Function Definition ----------*/
+/*---------- Function Definitions ----------*/
 // Removes the white space within the string
 string removeWhiteSpace(string input)
 {
