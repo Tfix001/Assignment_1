@@ -64,7 +64,7 @@ string findDegrees(string poly){
         break;
     }
     if(poly[index + 1] == '^'){
-        for(unsigned j = index + 1; poly[j] != '+'; j++){
+        for(unsigned j = index + 2; poly[j] != '+'; j++){
             newString += poly[j];
         }
     }
