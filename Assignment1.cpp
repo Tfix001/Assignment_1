@@ -8,6 +8,8 @@ using namespace std;
 
 string findDegrees(string);
 string getHighestDegree(string);
+string removeWhiteSpace(string);
+bool isPolynomial(string);
 
 /*
 Assuming...
@@ -15,7 +17,7 @@ Expression cannot start with '.', at least "0."
 Expressions do not include '/'
 The variable is 'n'
 Expressions do not include special characters i.e. '@', '!'
-Integers will not multiply with each other i.e. 4*4
+All multiplication between numbers and variables are assumed to be resolved before being entered i.e. 16 not 4*4 and n^3 not n*n*n
 The coeffecient won't be after the variable. "n * 2" / 
 No log functions
 */
@@ -26,6 +28,15 @@ int main(){
   //Second check for invalidity i.e. n^3n && n^4.2 --
   string userPoly;
   getline(cin, userPoly);
+  userPoly = removeWhiteSpace(userPoly);
+
+  if (isPolynomial(userPoly)){
+    cout << "This is a valid polynomial." << endl;
+  }
+  else{
+    cout << "This is not a valid polynomial." << endl;
+  }
+
   return 0;
 }
 
@@ -92,4 +103,160 @@ string getHighestDegree(string strOfExp){
   else{
     return "0";
   }
+}
+
+/*---------- Function Definition ----------*/
+// Removes the white space within the string
+string removeWhiteSpace(string input)
+{
+  // New string without the whitespace.
+  string noWhitespace;
+  // The new position that the int is going to take in the temp string
+  int newPosition = 0;
+  // For the length of the string
+  for (int i = 0; i < input.length(); i++)
+  {
+    // If the char in the string is not a whitespace
+    if (input[i] != ' ')
+    {
+      // Copy that into the new string
+      noWhitespace += input[i];
+    }
+  }
+  return noWhitespace;
+}
+
+// Returns if the expression is a polynomial
+bool isPolynomial(string userPoly){
+  // This is assuming that the polynomial starts with 'n' or a number
+  char state = 'A';
+  bool isPolynomial = 1;
+
+  // For the length of the entire polynomial
+  for(int i = 0; i < userPoly.length() + 1; i++) {
+    switch(state)
+    {
+      case 'A':
+        if(isdigit(userPoly[i])){ // If the character is a number
+          state = 'C';
+        }
+        else if (userPoly[i] == 'n'){ // If the character is 'n'
+          state = 'B';
+        }
+        else { // If it does not meet this criteria, go to default state and return false
+          state = 'Z';
+        }
+        break;
+
+      case 'B':
+        if(userPoly[i] == '+') { // If the character is '+'
+          state = 'A';
+        }
+        else if(userPoly[i] =='^'){ // If the character is '^'
+          state = 'G';
+        }
+        else{ // If it does not meet this criteria, go to default state and return false
+          state = 'Z';
+        }
+        break;
+
+      case 'C': //there is a self loop
+        if(isdigit(userPoly[i])) { // If the char is a number
+          state = 'C';
+        }
+        else if(userPoly[i] == '.'){ // If the char is a '.'
+          state = 'D';
+        }
+        else if(userPoly[i] == '*'){ // If the char is a '*'
+          state = 'F';
+        }
+        else if(userPoly[i] == '+'){ // If the char is a '+'
+          state = 'A';
+        }
+        else{ // If it does not meet this criteria, go to default state and return false
+          state = 'Z';
+        }
+        break;
+
+      case 'D':
+        if(isdigit(userPoly[i])){  // If the char is a number
+          state = 'E';
+        }
+        else{ // If it does not meet this criteria, go to default state and return false
+          state = 'Z';
+        }
+        break;
+
+      case 'E':
+        if(isdigit(userPoly[i])){  // If the char is a number
+          state = 'E';
+        }
+        else if(userPoly[i] == '*'){  // If the char is a '*'
+          state = 'F';
+        }
+        else if(userPoly[i] == '+'){ // If the char is a '+'
+          state = 'A';
+        }
+        else { // If it does not meet this criteria, go to default state and return false
+          state = 'Z';
+        }
+        break;
+
+      case 'F':
+        if(userPoly[i] == 'n'){ // If the char is a 'n'
+          state = 'H';
+        }
+        else{ // If it does not meet this criteria, go to default state and return false
+          state = 'Z';
+        }
+        break;
+
+      case 'G':
+        if(isdigit(userPoly[i])){ // If the char is a number
+          state = 'I';
+        }
+        else{ // If it does not meet this criteria, go to default state and return false
+          state = 'Z';
+        }
+        break;
+
+      case 'H':
+        if(userPoly[i] =='^') { // If the char is a '^'
+          state = 'G';
+        }
+        else if ( userPoly[i] == '+') { // If the char is a '+'
+          state = 'A';
+        }
+        else{ // If it does not meet this criteria, go to default state and return false
+          state = 'Z';
+        }
+        break;
+
+      case 'I':
+        if(isdigit(userPoly[i])){ // If the char is a number
+          state = 'I';
+        }
+        else if (userPoly[i] == '+'){ // If the char is a '+'
+          state = 'A';
+        }
+        else{ // If it does not meet this criteria, go to default state and return false
+          state = 'Z';
+        }
+        break;
+
+      // The expression is deemed not to be a polynomial when it does not fit the above criterias
+      default:
+        isPolynomial = 0;
+        break;
+     }
+   }
+
+  // If the last character in the string is '.', '+', or '*' then return that it is not a polynomial
+   if(userPoly.size() > 0){
+        if(!isdigit(userPoly[userPoly.length() - 1]) && userPoly[userPoly.length() - 1] != 'n'){
+            isPolynomial = 0;
+        }
+   }
+
+   return isPolynomial;
 }
