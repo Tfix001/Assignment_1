@@ -3,14 +3,6 @@
 * Outside sources: Michael Ching (Gave us the idea to use a Finite State Machine)
 *                  Correctly finding size of an array
 *                      -https://stackoverflow.com/questions/2037736/how-to-find-the-size-of-an-int
-* Assumptions:
-*   - Expressions do not start with '.'
-*   - Expressions do not include '/'
-*   - The only variable used in the expression is 'n'
-*   - Expressions do not include special characters i.e. '@', '!'
-*   - All multiplication between numbers and variables are resolved before being entered i.e. 16 not 4*4 and n^3 not n*n*n
-*   - There will be no integers multiplied after the variable
-*   - No constant logarithmic expressions entered as coefficients
 */
 
 #include <iostream>
