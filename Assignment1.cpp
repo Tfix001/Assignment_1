@@ -84,3 +84,21 @@ void findSubset(int userArr[]&, int target, int subsetArr[]&, int arrSize){
   //TODO: Check if User Array is empty
   
 }
+
+void selectionSort(int* arr, int);
+
+selectionSort(userArr, Arrsize);
+
+void selectionSort(int* arr, int arrSize){
+    int maxInd;
+    for(int i = 0; i < arrSize; i++){
+        maxInd = i;
+        for(int j = i; j < arrSize; j++){
+            if(arr[maxInd] > arr[j]){
+                int temp = arr[maxInd];
+                arr[maxInd] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+}
