@@ -62,7 +62,7 @@ Should return the subsetArray? Should return somehow.
 //Array[size] = {what's inside the array}
 
 //TODO: Fix return type
-void findSubset(int userArr[]&, int, int subsetArr[]&);
+void findSubset(int userArr[]&, int, int subsetArr[]&, int);
 
 int main(){
     //(May need some assistance with understanding arrays, I'm more used to vectors) - Taylor
@@ -71,6 +71,7 @@ int main(){
   int userArray[]; //user inputs an array
   int userTarget; //user inputs an additional number, being the target number
   int subset[];
+  int userArrSize;
   
   //get the inputs and stuff
   
@@ -79,7 +80,7 @@ int main(){
   return 0;
 }
 
-void findSubset(int userArr[]&, int target, int subsetArr[]&){
+void findSubset(int userArr[]&, int target, int subsetArr[]&, int arrSize){
   //TODO: Check if User Array is empty
   
 }
