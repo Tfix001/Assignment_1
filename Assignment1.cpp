@@ -90,13 +90,13 @@ void selectionSort(int*, int);
 selectionSort(userArr, Arrsize);
 
 void selectionSort(int* arr, int arrSize){
-    int maxInd;
+    int minInd;
     for(int i = 0; i < arrSize; i++){
-        maxInd = i;
+        minInd = i;
         for(int j = i; j < arrSize; j++){
-            if(arr[maxInd] > arr[j]){
-                int temp = arr[maxInd];
-                arr[maxInd] = arr[j];
+            if(arr[minInd] < arr[j]){
+                int temp = arr[minInd];
+                arr[minInd] = arr[j];
                 arr[j] = temp;
             }
         }
