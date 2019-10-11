@@ -61,33 +61,14 @@ Should return the subsetArray? Should return somehow.
 
 //Array[size] = {what's inside the array}
 
-//TODO: Fix return type
-void findSubset(int userArr[]&, int, int subsetArr[]&, int);
+void selectionSort(int*, int);
 
 int main(){
-    //(May need some assistance with understanding arrays, I'm more used to vectors) - Taylor
-  //call findSubsetProduct
-  //output the subset and the product of subset (Which should hopefully be the initial target number
-  int userArray[]; //user inputs an array
-  int userTarget; //user inputs an additional number, being the target number
-  int subset[];
-  int userArrSize;
   
-  //get the inputs and stuff
-  
-  findSubset(userArr, userTarget, subset);
+  selectionSort(userArr, Arrsize); //TODO FIX NAME
   
   return 0;
 }
-
-void findSubset(int userArr[]&, int target, int subsetArr[]&, int arrSize){
-  //TODO: Check if User Array is empty
-  
-}
-
-void selectionSort(int*, int);
-
-selectionSort(userArr, Arrsize);
 
 void selectionSort(int* arr, int arrSize){
     int minInd;
