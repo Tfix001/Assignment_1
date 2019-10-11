@@ -85,7 +85,7 @@ void findSubset(int userArr[]&, int target, int subsetArr[]&, int arrSize){
   
 }
 
-void selectionSort(int* arr, int);
+void selectionSort(int*, int);
 
 selectionSort(userArr, Arrsize);
 
