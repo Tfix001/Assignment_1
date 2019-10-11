@@ -65,13 +65,21 @@ Should return the subsetArray? Should return somehow.
 void findSubset(int userArr[]&, int, int subsetArr[]&);
 
 int main(){
-  //user inputs an array 
     //(May need some assistance with understanding arrays, I'm more used to vectors) - Taylor
-  //user inputs an additional number, being the target number
   //call findSubsetProduct
   //output the subset and the product of subset (Which should hopefully be the initial target number
+  int userArray[]; //user inputs an array
+  int userTarget; //user inputs an additional number, being the target number
+  int subset[];
+  
+  //get the inputs and stuff
+  
+  findSubset(userArr, userTarget, subset);
+  
   return 0;
 }
 
-void findSubset(int userArr[]&, int target){
+void findSubset(int userArr[]&, int target, int subsetArr[]&){
+  //TODO: Check if User Array is empty
+  
 }
