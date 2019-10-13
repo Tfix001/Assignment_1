@@ -2,7 +2,7 @@
 
 Assignment 2: 
 
-Exercise 1
+Exercise 1:
 If the elements of a list are sorted, is an array-based or a linked-list-based implementation of the list 
   more efficient for binary search? Explain. 
     Taylor's Thought: Array-based, since you have the actual size to look at. A linked-list will not be continuous block to look at efficiently
@@ -11,6 +11,7 @@ If the elements of a list are sorted, is an array-based or a linked-list-based i
           This is because with an array, you would be able to access elements through indexes, whereas with linked lists, you would have to traverse the entire list from the head in order to find the element you are looking for.
           A doubly linked list would be slightly more efficient than a singly linked list, since you can search the element from both the head and the tail, however, it would still pale in comparison to using an array.
 
+Exercise 2:
 Write C++ code to implement an integer queue class using linked-list, where the nodes are
   stored sorted by ascending value of the integer they store. We call this a priority queue.
   Specifically, implement enqueue and dequeue methods.
@@ -29,6 +30,7 @@ Write C++ code to implement an integer queue class using linked-list, where the 
     It would make the execution time worst then.
   Is there any disadvantage that modification (c) incurs?
 
+Exercise 3:
 Write a C++ class that implement two stacks using a single C++ array. That is, it should have functions
   popFirst(…), popSecond(…), pushFirst(…), pushSecond(…),… When out of space, double the size of the
   array (similarly to what vector is doing).
